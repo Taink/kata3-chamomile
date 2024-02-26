@@ -16,4 +16,8 @@ public class MarsRover {
     public RoverPosition getPosition() {
         return this.position;
     }
+
+    public RoverPosition MoveForward() {
+        return this.position.north();
+    }
 }

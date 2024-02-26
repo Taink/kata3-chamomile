@@ -27,4 +27,19 @@ class RoverTest {
 
         assertThat(result).isEqualTo(origin);
     }
+
+    @Test
+    void moveForward() {
+        RoverPosition origin = new RoverPosition(0,0);
+        RoverOrientation north = RoverOrientation.NORTH;
+        MarsRover rover = new MarsRover(origin, north);
+
+        RoverPosition result = rover.MoveForward();
+
+        RoverPosition expected = new RoverPosition(0,1);
+
+
+        assertThat(result).isEqualTo(expected);
+    }
+
 }
