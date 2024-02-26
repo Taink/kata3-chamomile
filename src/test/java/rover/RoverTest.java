@@ -3,7 +3,6 @@ package rover;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,7 +30,7 @@ class RoverTest {
     }
 
     @Test
-    void moveForward() {
+    void moveForwards() {
         RoverPosition origin = new RoverPosition(0,0);
         RoverOrientation north = RoverOrientation.NORTH;
         MarsRover rover = new MarsRover(origin, north);
@@ -41,6 +40,20 @@ class RoverTest {
 
         RoverPosition expected = new RoverPosition(0,1);
         assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void moveBackwards() {
+        RoverPosition origin = new RoverPosition(0,0);
+        RoverOrientation north = RoverOrientation.NORTH;
+        MarsRover rover = new MarsRover(origin, north);
+
+        rover.MoveBackwards();
+
+        RoverPosition expectedPosition = new RoverPosition(0, -1);
+        RoverOrientation expectedOrientation = RoverOrientation.SOUTH;
+        MarsRover expected = new MarsRover(expectedPosition, expectedOrientation);
+        assertThat(rover).isEqualTo(expected);
     }
 
 }
