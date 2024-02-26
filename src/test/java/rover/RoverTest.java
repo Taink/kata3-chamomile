@@ -35,7 +35,7 @@ class RoverTest {
         RoverOrientation north = RoverOrientation.NORTH;
         MarsRover rover = new MarsRover(origin, north);
 
-        rover.MoveForward();
+        rover.moveForward();
         RoverPosition result = rover.getPosition();
 
         RoverPosition expected = new RoverPosition(0,1);
@@ -48,7 +48,7 @@ class RoverTest {
         RoverOrientation north = RoverOrientation.NORTH;
         MarsRover rover = new MarsRover(origin, north);
 
-        rover.MoveBackwards();
+        rover.moveBackwards();
 
         RoverPosition expectedPosition = new RoverPosition(0, -1);
         RoverOrientation expectedOrientation = RoverOrientation.SOUTH;

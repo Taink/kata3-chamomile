@@ -19,11 +19,11 @@ public class MarsRover {
         return this.position;
     }
 
-    public void MoveForward() {
+    public void moveForward() {
         this.position = this.position.getNorth();
     }
 
-    public void MoveBackwards() {
+    public void moveBackwards() {
         this.orientation = switch (this.orientation) {
             case EAST -> RoverOrientation.WEST;
             case WEST -> RoverOrientation.EAST;
