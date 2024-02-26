@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PositionTest {
+public class MarsCoordsTest {
 
     @ParameterizedTest
     @CsvSource({
@@ -14,10 +14,10 @@ public class PositionTest {
             "-55,-34,-55,-33"
     })
     void northPosition(int startX, int startY, int endX, int endY) {
-        RoverPosition start = new RoverPosition(startX, startY);
-        RoverPosition end = new RoverPosition(endX, endY);
+        MarsCoords start = new MarsCoords(startX, startY);
+        MarsCoords end = new MarsCoords(endX, endY);
 
-        RoverPosition result = start.getNorth();
+        MarsCoords result = start.getNorth();
 
         assertThat(result).isEqualTo(end);
     }
@@ -29,10 +29,10 @@ public class PositionTest {
             "-55,-34,-55,-35"
     })
     void southPosition(int startX, int startY, int endX, int endY) {
-        RoverPosition start = new RoverPosition(startX, startY);
-        RoverPosition end = new RoverPosition(endX, endY);
+        MarsCoords start = new MarsCoords(startX, startY);
+        MarsCoords end = new MarsCoords(endX, endY);
 
-        RoverPosition result = start.getSouth();
+        MarsCoords result = start.getSouth();
 
         assertThat(result).isEqualTo(end);
     }
@@ -44,10 +44,10 @@ public class PositionTest {
             "-55,-34,-54,-34"
     })
     void eastPosition(int startX, int startY, int endX, int endY) {
-        RoverPosition start = new RoverPosition(startX, startY);
-        RoverPosition end = new RoverPosition(endX, endY);
+        MarsCoords start = new MarsCoords(startX, startY);
+        MarsCoords end = new MarsCoords(endX, endY);
 
-        RoverPosition result = start.getEast();
+        MarsCoords result = start.getEast();
 
         assertThat(result).isEqualTo(end);
     }
@@ -59,10 +59,10 @@ public class PositionTest {
             "-55,-34,-56,-34"
     })
     void westPosition(int startX, int startY, int endX, int endY) {
-        RoverPosition start = new RoverPosition(startX, startY);
-        RoverPosition end = new RoverPosition(endX, endY);
+        MarsCoords start = new MarsCoords(startX, startY);
+        MarsCoords end = new MarsCoords(endX, endY);
 
-        RoverPosition result = start.getWest();
+        MarsCoords result = start.getWest();
 
         assertThat(result).isEqualTo(end);
     }

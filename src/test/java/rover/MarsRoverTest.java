@@ -6,52 +6,52 @@ import org.junit.jupiter.params.provider.EnumSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RoverTest {
+class MarsRoverTest {
 
     @ParameterizedTest
-    @EnumSource(RoverOrientation.class)
-    void hasOrientation(RoverOrientation baseOrientation) {
-        RoverPosition origin = new RoverPosition(0,0);
+    @EnumSource(MarsOrientation.class)
+    void hasOrientation(MarsOrientation baseOrientation) {
+        MarsCoords origin = new MarsCoords(0,0);
 
         MarsRover rover = new MarsRover(origin, baseOrientation);
-        RoverOrientation result = rover.getOrientation();
+        MarsOrientation result = rover.getFacingDirection();
 
         assertThat(result).isEqualTo(baseOrientation);
     }
 
     @Test
     void hasPosition() {
-        RoverPosition origin = new RoverPosition(0,0);
-        RoverOrientation north = RoverOrientation.NORTH;
+        MarsCoords origin = new MarsCoords(0,0);
+        MarsOrientation north = MarsOrientation.NORTH;
         MarsRover rover = new MarsRover(origin, north);
 
-        RoverPosition result = rover.getPosition();
+        MarsCoords result = rover.getCurrentPosition();
         assertThat(result).isEqualTo(origin);
     }
 
     @Test
     void moveForwards() {
-        RoverPosition origin = new RoverPosition(0,0);
-        RoverOrientation north = RoverOrientation.NORTH;
+        MarsCoords origin = new MarsCoords(0,0);
+        MarsOrientation north = MarsOrientation.NORTH;
         MarsRover rover = new MarsRover(origin, north);
 
         rover.moveForward();
-        RoverPosition result = rover.getPosition();
+        MarsCoords result = rover.getCurrentPosition();
 
-        RoverPosition expected = new RoverPosition(0,1);
+        MarsCoords expected = new MarsCoords(0,1);
         assertThat(result).isEqualTo(expected);
     }
 
     @Test
     void moveBackwards() {
-        RoverPosition origin = new RoverPosition(0,0);
-        RoverOrientation north = RoverOrientation.NORTH;
+        MarsCoords origin = new MarsCoords(0,0);
+        MarsOrientation north = MarsOrientation.NORTH;
         MarsRover rover = new MarsRover(origin, north);
 
         rover.moveBackwards();
 
-        RoverPosition expectedPosition = new RoverPosition(0, -1);
-        RoverOrientation expectedOrientation = RoverOrientation.SOUTH;
+        MarsCoords expectedPosition = new MarsCoords(0, -1);
+        MarsOrientation expectedOrientation = MarsOrientation.SOUTH;
         MarsRover expected = new MarsRover(expectedPosition, expectedOrientation);
         assertThat(rover).isEqualTo(expected);
     }

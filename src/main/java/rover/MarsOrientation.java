@@ -1,6 +1,6 @@
 package rover;
 
-public enum RoverOrientation {
+public enum MarsOrientation {
     NORTH,
     SOUTH,
     EAST,

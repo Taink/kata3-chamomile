@@ -3,39 +3,39 @@ package rover;
 import java.util.Objects;
 
 public class MarsRover {
-    private RoverOrientation orientation;
-    private RoverPosition position;
+    private MarsOrientation facingDirection;
+    private MarsCoords currentPosition;
 
-    public MarsRover(RoverPosition origin, RoverOrientation defaultOrientation) {
-        this.orientation = defaultOrientation;
-        this.position = origin;
+    public MarsRover(MarsCoords initialCoords, MarsOrientation facingDirection) {
+        this.facingDirection = facingDirection;
+        this.currentPosition = initialCoords;
     }
 
-    public RoverOrientation getOrientation() {
-        return this.orientation;
+    public MarsOrientation getFacingDirection() {
+        return this.facingDirection;
     }
 
-    public RoverPosition getPosition() {
-        return this.position;
+    public MarsCoords getCurrentPosition() {
+        return this.currentPosition;
     }
 
     public void moveForward() {
-        this.position = this.position.getNorth();
+        this.currentPosition = this.currentPosition.getNorth();
     }
 
     public void moveBackwards() {
-        this.orientation = switch (this.orientation) {
-            case EAST -> RoverOrientation.WEST;
-            case WEST -> RoverOrientation.EAST;
-            case NORTH -> RoverOrientation.SOUTH;
-            case SOUTH -> RoverOrientation.NORTH;
+        this.facingDirection = switch (this.facingDirection) {
+            case EAST -> MarsOrientation.WEST;
+            case WEST -> MarsOrientation.EAST;
+            case NORTH -> MarsOrientation.SOUTH;
+            case SOUTH -> MarsOrientation.NORTH;
         };
 
-        this.position = switch (this.orientation) {
-            case EAST -> this.position.getWest();
-            case WEST -> this.position.getEast();
-            case NORTH -> this.position.getSouth();
-            case SOUTH -> this.position.getNorth();
+        this.currentPosition = switch (this.facingDirection) {
+            case WEST -> this.currentPosition.getWest();
+            case EAST -> this.currentPosition.getEast();
+            case SOUTH -> this.currentPosition.getSouth();
+            case NORTH -> this.currentPosition.getNorth();
         };
     }
 
@@ -44,11 +44,11 @@ public class MarsRover {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MarsRover marsRover = (MarsRover) o;
-        return orientation == marsRover.orientation && Objects.equals(position, marsRover.position);
+        return facingDirection == marsRover.facingDirection && Objects.equals(currentPosition, marsRover.currentPosition);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orientation, position);
+        return Objects.hash(facingDirection, currentPosition);
     }
 }
