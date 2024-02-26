@@ -1,20 +1,23 @@
 package rover;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RoverTest {
 
-    @Test
-    void hasOrientation() {
+    @ParameterizedTest
+    @EnumSource(RoverOrientation.class)
+    void hasOrientation(RoverOrientation baseOrientation) {
         RoverPosition origin = new RoverPosition(0,0);
-        RoverOrientation north = RoverOrientation.NORTH;
 
-        MarsRover rover = new MarsRover(origin, north);
+        MarsRover rover = new MarsRover(origin, baseOrientation);
         RoverOrientation result = rover.getOrientation();
 
-        assertThat(result).isEqualTo(north);
+        assertThat(result).isEqualTo(baseOrientation);
     }
 
     @Test
