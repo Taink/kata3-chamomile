@@ -17,7 +17,7 @@ public class MarsRover {
         return this.position;
     }
 
-    public RoverPosition MoveForward() {
-        return this.position.north();
+    public void MoveForward() {
+        this.position = this.position.north();
     }
 }
