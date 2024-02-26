@@ -12,9 +12,19 @@ class RoverTest {
         RoverOrientation north = RoverOrientation.NORTH;
 
         MarsRover rover = new MarsRover(origin, north);
-
         RoverOrientation result = rover.getOrientation();
 
         assertThat(result).isEqualTo(north);
+    }
+
+    @Test
+    void hasPosition() {
+        RoverPosition origin = new RoverPosition(0,0);
+        RoverOrientation north = RoverOrientation.NORTH;
+        MarsRover rover = new MarsRover(origin, north);
+
+        RoverPosition result = rover.getPosition();
+
+        assertThat(result).isEqualTo(origin);
     }
 }
