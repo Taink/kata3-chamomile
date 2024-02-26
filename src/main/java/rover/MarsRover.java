@@ -18,6 +18,6 @@ public class MarsRover {
     }
 
     public void MoveForward() {
-        this.position = this.position.north();
+        this.position = this.position.getNorth();
     }
 }
